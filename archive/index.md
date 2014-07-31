@@ -7,7 +7,7 @@ description: 归档
 
 因为是静态博客，没有搜索，可以用Google或者[通过TAG索引这个笔记](/linux-kernel-architecture/tags/)。
 
-所以这个笔记只是加强和巩固基础，对细节感兴趣的同学可以直接读这两本书比较好[《深入Linux内核架构》](http://book.douban.com/subject/4843567/)，[《深入理解LINUX内核》](http://book.douban.com/subject/1767120/)。
+所以这个笔记只是加强和巩固基础，对细节感兴趣的同学可以直接读这两本书[《深入Linux内核架构》](http://book.douban.com/subject/4843567/)，[《深入理解LINUX内核》](http://book.douban.com/subject/1767120/)。
 
 也会不定期从网上搜集一些内容，我本身很搓，可能有各种typo。这篇博客里的所有内容，版权归书的作者所有，我只是记笔记的。这篇博客内容可以任意复制备份和免费发布，但不能用于**任何商业目的**。
 
