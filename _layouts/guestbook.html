@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>{{ page.title }}|{{ site.title }}</title>
+  {% include header.html %}
+</head>
+<body>
+{% include banner.html %}
+
+<div class="main">
+<div class="title">{{ page.title }}</div>
+<div class="content">{{ content }}</div>
+</div>
+
+
+<div class="comments">
+{% include disqus.html %}
+</div>
+
+{% include footer.html %}
+</body>
+</html>

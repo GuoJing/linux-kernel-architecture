@@ -1,0 +1,6 @@
+_site
+*.sw[mnpo]
+*.un~
+.DS_Store
+*.pdf
+*.psd
