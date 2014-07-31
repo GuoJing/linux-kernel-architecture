@@ -4,7 +4,7 @@ cafe:
 
 linux:
 	jekyll build
-	ghp-import _site -b gh-pages -r linux -p
+	ghp-import _site -p -n
 
 pub:
 	make cafe
