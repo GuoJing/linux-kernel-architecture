@@ -9,3 +9,5 @@ linux:
 pub:
 	make cafe
 	make linux
+	git ci -am'auto commit'
+	git push origin master
