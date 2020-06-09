@@ -184,10 +184,7 @@ NORET_TYPE void do_exit(long code){
 
 所有的进程的终止都是由do\_exit()函数来处理，这个函数从内核数据结构中删除堆终止进程的大部分引用，同样，do\_exit()函数接受终止代号作为参数执行。
 
-{:.center}
-![system](/linux-kernel-architecture/images/exit.png){:style="max-width:600px"}
-
-{:.center}
+![system](images/exit.png)
 进程终止流程图
 
 该函数执行了下列操作：

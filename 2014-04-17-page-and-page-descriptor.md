@@ -25,10 +25,7 @@ tags: 内存 UMA NUMA 页描述符 page
 
 一般情况下，有两种计算机，分别为UMA和NUMA计算机来管理物理内存，虽然之前的笔记已经提到过，这里再拿出来。
 
-{:.center}
-![numa](/linux-kernel-architecture/images/numa.png){:style="max-width:600px"}
-
-{:.center}
+![numa](images/numa.png)
 UMA和NUMA
 
 （1）：UMA计算机（*一致内存访问，uniform memory access*）将可用内存以连续方式组织起来，系统中的每个处理器访问各个内存都是同样的块。
@@ -98,7 +95,6 @@ struct page {
 
 其中各个字段的意义如下：
 
-{:.table_center}
 字段名             | 说明
 ------------      | -------------
 flags             | 一组标志，对页框所在的管理区进行编号
@@ -111,7 +107,6 @@ lru               | 包含页的最近最少使用（LRU）双向链表的指针
 
 其中重要的两个字段为*_count*和*flags*。*_count*是页的引用计数器，如果字段为-1，则相应的页框空闲，并可以被分配给任意一个进程甚至内核本身，如果该字段大于或等于-，则说明页框被分配给了一个或多个进程，用于存放一些内核数据结构。*flags*包含多大32个用来描述页框标志的状态，对于每个PG_xxx标志内核都定义了操作其值的一些宏。
 
-{:.table_center}
 标志名             | 说明
 ------------      | -------------
 PG_locked         | 页被锁定

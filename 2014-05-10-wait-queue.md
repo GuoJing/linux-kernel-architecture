@@ -37,7 +37,6 @@ struct __wait_queue {
 
 我们可以看到链表*__wait_queue*中的各个字段，其字段意义如下：
 
-{:.table_center}
 字段                  | 说明
 ------------          | -------------
 flags                 | 为WQ\_FLAG\_EXCUSIVE或为0，WQ\_FLAG\_EXCUSIVE表示等待进程想要被独占地唤醒

@@ -9,10 +9,7 @@ tags: 进程 切换 调度 线程 命名空间
 
 下面是一个粗略的草图，概述了组成完成Linux系统的各个层次，以及内核所包含的一些重要子系统。
 
-{:.center}
-![system](/linux-kernel-architecture/images/linux-system.png){:style="max-width:600px"}
-
-{:.center}
+![system](images/linux-system.png)
 内核大体的体系结构
 
 ### 进程/切换/调度 ###

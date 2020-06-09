@@ -36,10 +36,7 @@ IRQ线总是从0开始顺序编号的，因此，第一条IRQ线通常表示成I
 
 为了充分发挥SMP体系结构的并行性，能够把中断传递给系统中的每个CPU就非常重要，因此Intel从Pentiun III引入了一种名为I/O高级可编程控制器的新组件，用以代替老式的可编程中断控制器。新近的主板为了支持以前的操作都包括两种芯片，此外80x86微处理器当前所有的CPU都含有一个本地的APIC，每个本地APIC都有32位寄存器，一个内部时钟，一个本地定时设备以及为本地APIC中断保留的两条额外的IRQ线LINT0和LINT1，所有本地APIC都连接到一个外部I/O APIC，形成一个多APIC系统。
 
-{:.center}
-![system](/linux-kernel-architecture/images/APIC.png){:style="max-width:500px"}
-
-{:.center}
+![system](images/APIC.png)
 多APIC系统
 
 上图是一个多APIC系统的结构，一条APIC总线把『前端』的I/O APIC连接到本地APIC。来自设备的IRQ线连接到I/O APIC，因此，相对于本地APIC，I/O APIC起路由器的作用。I/O APIC的组成为：

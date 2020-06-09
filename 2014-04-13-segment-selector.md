@@ -7,10 +7,7 @@ tags: 段选择符 段寄存器 特权级 CPL 用户态 内核态
 ---
 一个逻辑地址由两部分组成：一个段标识符和一个指定段内相对地址的偏移量。段标识符是一个16位长的字段，称为段选择符（*Segment Selector*），而偏移量是一个32位长的字段。
 
-{:.center}
-![system](/linux-kernel-architecture/images/segment_selector.png){:style="max-width:500px"}
-
-{:.center}
+![system](images/segment_selector.png)
 段选择符
 
 为了快速方便地找到段选择符，处理器提供段寄存器，段寄存器地唯一目的是存放段选择符。这些段寄存器称为cs、ss、ds、es、fs和gs。尽管只有6个段寄存器，但程序可以把同一个段寄存器用于不同地目的，这6个段寄存器3个有专门的用途：

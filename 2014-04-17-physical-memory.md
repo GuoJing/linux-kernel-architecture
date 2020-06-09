@@ -28,10 +28,7 @@ tags: 内存 物理内存 物理内存布局
 
 内核可能不会见到BIOS报告的所有物理内存，如果没有使用PAE机制，则最高寻址4GB大小的RAM。*setup_memory()*函数在*machine_specific_memory_setup()*函数之后被调用，它分析物理内存区域表示并初始化一些变量来描述内核物理内存布局。
 
-{:.center}
-![system](/linux-kernel-architecture/images/page_frame.png){:style="max-width:700px"}
-
-{:.center}
+![system](images/page_frame.png)
 物理内存的布局
 
 为了避免把内核装入一组不连续的页框里，Linux更愿意跳过RAM的第一个MB，明确地说，Linux用PC体系结构未保留的页框来动态存放所分配的页。

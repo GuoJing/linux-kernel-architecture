@@ -54,8 +54,7 @@ long do_fork(unsigned long clone_flags,
 
 所有的3个fork机制都调用了do_fork这个与体系结构无关的函数，代码流程图如下：
 
-{:.center}
-![system](/linux-kernel-architecture/images/do_fork.png){:style="max-width:600px"}
+![system](images/do_fork.png)
 
 其中执行了下列操作：
 
@@ -88,7 +87,7 @@ static struct task_struct *copy_process(
 函数流程图如下：
 
 {:.center}
-![system](/linux-kernel-architecture/images/copy_process.png){:style="max-width:300px"}
+![system](images/copy_process.png){:style="max-width:300px"}
 
 该函数执行下列操作：
 

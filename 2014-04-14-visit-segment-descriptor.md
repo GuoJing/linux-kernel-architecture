@@ -13,10 +13,7 @@ tags: 段描述符 分段单元
 
 每当一个段选择符被装入段寄存器时，相应的段描述符就由内存装入到对应的非编程CPU寄存器。从那时起，针对那个段的逻辑地址转换就可以不访问主存中的GDT或LDT。处理器只需直接引用存放段描述符的CPU寄存器即可。只有当段寄存器的内容改变时，才有必要访问GDT或LDT。
 
-{:.center}
-![system](/linux-kernel-architecture/images/visit_segment.png){:style="max-width:500px"}
-
-{:.center}
+![system](images/visit_segment.png)
 快速访问段描述符
 
 由于一个段描述符是8字节长，因此它在GDT或LDT内的相对地址是由段选择符的最高13位的值乘以8[^3]得到的。例如如果GDT在0x00020000[^2]，且由段选择符所指定的索引号为2，即段选择符中的index值为2.那么相应的段描述符地址是0x00020000 + (2*8)。能够保存在GDT中的段描述符的最大数目是8191，即2^13-1。
@@ -31,9 +28,7 @@ tags: 段描述符 分段单元
 
 下图显示了一个逻辑地址是怎样转换成相应的线性地址。
 
-{:.center}
-![system](/linux-kernel-architecture/images/segmentation.png){:style="max-width:600px"}
-
+![system](images/segmentation.png)
 分段单元执行的操作
 
 分段单元（*segmentation*）执行下列操作：

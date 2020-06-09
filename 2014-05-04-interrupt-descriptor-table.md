@@ -11,10 +11,7 @@ GDT和IDT地格式非常相似，表中地每一项对应一个中断或异常�
 
 IDT包含三种类型地描述符：
 
-{:.center}
-![IDT](/linux-kernel-architecture/images/idt.png){:style="max-width:700px"}
-
-{:.center}
+![IDT](images/idt.png)
 中断描述符表
 
 这些描述符是：

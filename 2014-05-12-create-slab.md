@@ -7,10 +7,7 @@ tags: slab
 ---
 创建新的slab缓存必须使用*kmem_cache_create*函数，这个函数很长，在分析代码之前我们可以看看这个函数的流程图。
 
-{:.center}
-![slab](/linux-kernel-architecture/images/slab_create.png){:style="max-width:600px"}
-
-{:.center}
+![slab](images/slab_create.png)
 创建slab流程图
 
 除了可读的*name*随后会出现在*/proc/slabinfo*，这个函数的参数需要进行一些检查，以确保没有指定一些无效的值。去掉一些调试的代码，其函数的代码如下。
@@ -243,7 +240,7 @@ static size_t calculate_slab_order(struct kmem_cache *cachep,
         /*
          * 通过该函数找到一个slab布局
          */
-        cache_estimate(gfporder, size, 
+        cache_estimate(gfporder, size,
             align, flags, &remainder, &num);
         if (!num)
             continue;

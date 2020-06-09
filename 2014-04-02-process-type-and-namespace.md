@@ -31,10 +31,7 @@ fork和exec在所有的UNIX操作系统上都是可用的，除此之外Linux还
 
 命名空间建立了系统的不同视图，如下图。命名空间可以按层次关联起来，每个命名空间都发源于一个父命名空间，一个父命名空间可以有多各子命名空间。
 
-{:.center}
-![system](/linux-kernel-architecture/images/namespace.png){:style="max-width:500px"}
-
-{:.center}
+![system](images/namespace.png)
 命名空间
 
 命名空间可以组织为层次结构。一个命名空间是父命名空间，衍生了两个子命名空间。假定容器用于虚拟主机配置中，其中的每个容器必须看起来是一台单独的Linux计算机，因此其中每个都有自身的init进程，PID为0，其他进程的PID以递增次序分配。两个子命名空间都有PID为0的init进程，以及PID为2、3的进程。

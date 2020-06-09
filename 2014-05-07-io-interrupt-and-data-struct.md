@@ -32,10 +32,7 @@ tags: PIC 中断处理
 
 如下图：
 
-{:.center}
-![I/O IRQ](/linux-kernel-architecture/images/ioirq.png){:style="max-width:600px"}
-
-{:.center}
+![I/O IRQ](images/ioirq.png)
 I/O中断处理
 
 ### 中断向量 ###
@@ -51,7 +48,6 @@ I/O中断处理
 
 PIC的概念可以[点此连接](http://zh.wikipedia.org/wiki/PIC微控制器)。Linux中的中断向量如下：
 
-{:.table_center}
 向量范围                  | 用途
 ------------             | -------------
 0～19                    | 非屏蔽中断和异常

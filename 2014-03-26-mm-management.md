@@ -29,10 +29,7 @@ tags: 内存 UMA NUMA
 
 ### UMA和NUMA ###
 
-{:.center}
-![numa](/linux-kernel-architecture/images/numa.png){:style="max-width:600px"}
-
-{:.center}
+![numa](images/numa.png)
 UMA和NUMA体系结构
 
 有两种类型的计算机，分别以不同的方法管理物理内存。
@@ -51,10 +48,7 @@ RAM基本上被划分为两部分，其中若干兆节用于存放内核映象�
 
 虚拟内存另一个必须要解决的问题是内存碎片。理想情况下，只有页框太少，新请求的内存才能返回失败。但是有很多情况内存会产生碎片，虽然系统里有了较多的空闲内存，但可能没有连续的地址空间，则也没有足够可用的内存，不能作为一个连续的大块来使用，那么内存请求也会失败。
 
-{:.center}
-![system](/linux-kernel-architecture/images/mem.png){:style="max-width:300px"}
-
-{:.center}
+![system](images/mem.png)
 内存碎片
 
 如上图的第一行，有8字节的内存，当申请4字节时，可以申请成功。假设产生了一个内存碎片，继续申请，如第二步，还是可以有4字节的内存空间。如果产生了第三步那样的内存碎片，则申请4字节的内存空间会失败，因为没有连续的内存空间。

@@ -25,10 +25,7 @@ tags: 优先级
 
 进程的运行按时间片调度，分配给进程的时间份额与其相对重要性相当。如果进程优先级高，则可能获取较多的CPU时间，反之则获取较少的CPU时间。可以模拟成下图：
 
-{:.center}
-![system](/linux-kernel-architecture/images/process-pri.png){:style="max-width:500px"}
-
-{:.center}
+![system](images/process-pri.png)
 进程调度
 
 系统中的时间流动对应圆盘的转动，CPU则类似于扫描器，最后的效果是，尽管所有的进程都有机会运行，但重要的进程会比次要的得到更多的CPU时间。这种方案称之为抢占式多任务处理（*preemptive multitasking*），各个进程都分配到一定的时间段上执行。所有的CPU寄存器的内容和页表，在转换时都会保存起来。

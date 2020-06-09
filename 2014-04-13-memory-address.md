@@ -25,10 +25,7 @@ tags: 内存寻址 逻辑地址 线性地址 物理地址 内存控制单元 MMU
 
 内存控制单元（*MMU*）通过一种称为分段单元（*segmentation unit*）的硬件电路把一个逻辑地址转换成线性地址；然后，第二个称为分页单元（*paging unit*）的硬件电路把线性地址转换成一个物理地址。
 
-{:.center}
-![system](/linux-kernel-architecture/images/mmu.png){:style="max-width:500px"}
-
-{:.center}
+![system](images/mmu.png)
 内存控制单元转换示意图
 
 在多处理系统中，所有CPU都共享同一内存；这意味着RAM芯片可以由独立的CPU并发地访问。因为在RAM芯片上的读或写操作必须串行地执行，因此，一种所谓的内存仲裁器（*memory arbiter*）的硬件电路插在总线和每个RAM芯片之间。

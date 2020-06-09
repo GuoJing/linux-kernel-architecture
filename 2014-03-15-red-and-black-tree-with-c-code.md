@@ -39,8 +39,7 @@ tags: 红黑树 查找树
 
 具体步骤如下所示：
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/search_tree.png){:style="max-width:500px"}
+![system](images/tree/search_tree.png)
 
 分解成下面步骤：
 
@@ -60,7 +59,7 @@ int put(struct node *root, const int value){
     c->right = NULL;
     c->parent = NULL;
     c->value = value;
- 
+
     while(p){
         if(value==p->value) break;
         if(value<p->value){
@@ -79,7 +78,7 @@ int put(struct node *root, const int value){
             p = p->right;
         }
     }
- 
+
     return 1;
 }
 {% endhighlight %}
@@ -91,18 +90,12 @@ int put(struct node *root, const int value){
 1. 如果删除的节点没有左右孩子，则直接删除。
 2. 如果要删除一个节点，则查找右子树中的最小值或者左子树中的最大值，与要删除的节点交换。
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/search_tree_del_1.png){:style="max-width:700px"}
-
-{:.center}
+![system](images/tree/search_tree_del_1.png)
 删除一个根节点24或者根节点8
 
 ----
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/search_tree_del_2.png){:style="max-width:700px"}
-
-{:.center}
+![system](images/tree/search_tree_del_2.png)
 删除一个有子树的节点20，交换后依旧能保持搜索树的性质
 
 上面的图中，无论是右子树的最小值还是左子树的最大值都可以。如果没有右子树或者左子树，则用右子树和左子树的根替换即可。图中删除节点20的右子树为以30为根节点的子树。左子树为以13为根节点的子树。所以右子树的最小值为24，替换20，再删除20。左子树的最大值为13，则替换20。
@@ -196,8 +189,7 @@ int del(struct node *root, const int value){
 
 其中性质3可以这么看，叶子节点就是二叉树里最下面的节点的一个空节点，可以被称为NIL节点。如下图。
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_1.png){:style="max-width:700px"}
+![system](images/tree/rb_1.png)
 
 这里的-1这个节点的两个nil节点都是黑色，也就是说倒数一层的节点是红色的。但其实没有关系，有没有这个nil节点都没有关系，为了简单，后面的图我就不画这些nil节点了。可以默认认为，每个新的节点都有两个nil节点，这两个nil节点其实都是NULL节点。这里必须理解。
 
@@ -228,8 +220,7 @@ struct rbtree {
 
 在红黑树中另一个非常重要的概念就是节点的旋转，有左旋和右旋。每一次左旋和右旋之后都会生成新的子树，图如下。
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rotate.png){:style="max-width:500px"}
+![system](images/tree/rotate.png)
 
 需要注意一点的是，上面示意图里的旋转节点里面的X和Y都有子节点，但如果X，Y没有子节点的话，可以想象成nil，也就是NULL。虽然a、b、c都可能为NULL，但不代表只是交换了X和Y的值。必须是旋转了。只是Y的左孩子NULL变成了X的右孩子NULL。
 
@@ -294,10 +285,7 @@ static void insert_case5(struct rbtree *t, struct node *n);
 
 新节点位于树的根上，这种情况下，比较简单，就一个节点，直接变为黑色即可。如下图。
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_insert_1.png){:style="max-width:300px"}
-
-{:.center}
+![system](images/tree/rb_insert_1.png)
 1节点作为根节点则直接变为黑色
 
 代码如下：
@@ -315,10 +303,7 @@ void insert_case1(struct rbtree *t, struct node *n) {
 
 如果新节点的根节点颜色是黑色，则就没有违反任何性质，因为新节点是红色的，在任何一个简单路径都没有增加黑色节点的个数。如下图。
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_insert_2.png){:style="max-width:600px"}
-
-{:.center}
+![system](images/tree/rb_insert_2.png)
 无论是增加一个2节点还是0节点，都没有违反任何性质
 
 上图的0节点只是举例，我们还是按照插入2节点来说。
@@ -348,10 +333,7 @@ void insert_case2(struct rbtree *t, struct node *n) {
 
 如下图：
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_insert_3.png){:style="max-width:600px"}
-
-{:.center}
+![system](images/tree/rb_insert_3.png)
 改变节点颜色
 
 这个时候祖父节点G就是红色了。一般来说，祖父节G点是黑色，那么祖父节点G的父节点G->parent必须是红色节点，就又遇到这种情况。这个时候把指针指向祖父节点，然后再执行情况3。如果不满足这个条件了，就执行情况4。
@@ -386,10 +368,7 @@ void insert_case3(struct rbtree *t, struct node *n) {
 
 如下图：
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_insert_4.png){:style="max-width:600px"}
-
-{:.center}
+![system](images/tree/rb_insert_4.png)
 注意里面不只是把节点的值和颜色改了，是左旋和右旋
 
 其中上面一部分是新结点N是父节点P的左孩子，而P是其父节点的右孩子的情况，下面一部分是新节点N是父节点P的右孩子，而P是其父节点的左孩子的情况。
@@ -422,10 +401,7 @@ void insert_case4(struct rbtree *t, struct node *n) {
 
 如下图：
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_insert_5.png){:style="max-width:600px"}
-
-{:.center}
+![system](images/tree/rb_insert_5.png)
 注意里面不只是把节点的值和颜色改了，是左旋和右旋
 
 代码如下：
@@ -500,13 +476,9 @@ int main(){
 
 下图描绘了插入1、2、3、4、5整个红黑树的过程。
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_insert_steps.png){:style="max-width:700px"}
-
+![system](images/tree/rb_insert_steps.png)
 来加上插入12、11的过程。
-
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_insert_steps_2.png){:style="max-width:700px"}
+![system](images/tree/rb_insert_steps_2.png)
 
 基本上整个插入过程就是这样的了，相比删除还是比较简单的。
 
@@ -562,8 +534,7 @@ void delete_case1(struct rbtree *t, struct node *n) {
 
 如果兄弟节点S的颜色为红色，那么把父节点P的颜色变为红色，把兄弟节点S的颜色变为黑色。如果要删除的节点是左孩子，那么左旋要删除节点的父节点P。如果要删除的节点是右孩子，那么右旋要删除节点的父节点P。
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_delete.png){:style="max-width:600px"}
+![system](images/tree/rb_delete.png)
 
 如图所示，但执行了这一步之后还没有完，和插入不一样，删除还必须进入后续情况处理。
 
@@ -589,8 +560,7 @@ void delete_case2(struct rbtree *t, struct node *n) {
 
 这种情况下，只需要把叔叔节点的颜色变为红色，然后将指针指向父节点P，并进入第一种删除情况。因为叔叔节点变为红色之后，通过他的路径都少了一个黑色节点。
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_delete_3.png){:style="max-width:600px"}
+![system](images/tree/rb_delete_3.png)
 
 代码如下：
 
@@ -617,8 +587,7 @@ void delete_case3(struct rbtree *t, struct node *n) {
 
 这种情况下，我们简单的交换删除节点的父节点P和兄弟节点S的颜色。
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_delete_4.png){:style="max-width:600px"}
+![system](images/tree/rb_delete_4.png)
 
 代码如下：
 
@@ -645,8 +614,7 @@ void delete_case4(struct rbtree *t, struct node *n) {
 
 如果删除的节点N是左孩子，把叔叔节点的颜色变为红色，叔叔节点的左孩子颜色变为黑色。反之亦然。
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_delete_5.png){:style="max-width:600px"}
+![system](images/tree/rb_delete_5.png)
 
 代码如下：
 
@@ -682,8 +650,7 @@ void delete_case5(struct rbtree *t, struct node *n) {
 
 如果删除的节点N是左孩子，则把叔叔节点的右孩子变为黑色再旋转父节点，反之亦然。
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_delete_6.png){:style="max-width:600px"}
+![system](images/tree/rb_delete_6.png)
 
 代码如下：
 
@@ -717,7 +684,7 @@ void delete_node(struct rbtree *t, int value){
         n->value = pred->value;
         n = pred;
     }
-    
+
     child = n->right == NULL ? n->left : n->right;
     if (node_color(n) == BLACK) {
         n->color = node_color(child);
@@ -733,8 +700,7 @@ void delete_node(struct rbtree *t, int value){
 
 删除过程如下：
 
-{:.center}
-![system](/linux-kernel-architecture/images/tree/rb_delete_steps.png){:style="max-width:700px"}
+![system](images/tree/rb_delete_steps.png)
 
 基本上我们红黑树就讲解完了，如果有任何不理解的地方，请给我发邮件，也欢迎提PR修正里面的错误内容。
 

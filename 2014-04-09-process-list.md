@@ -7,10 +7,7 @@ tags: 进程链表 run_list
 ---
 进程链表是一种双向链表数据结构（*list_head*），简单的说一下双向链表。每一个双向链表，都有一组操作，插入和删除一个元素，扫描链表等等。双向链表和链表相同，但双向链表除了有指向下一个元素的指针，还有指向上一个元素的指针，所以被称为双向连表。
 
-{:.center}
-![system](/linux-kernel-architecture/images/link.png){:style="max-width:500px"}
-
-{:.center}
+![system](images/link.png)
 进程链表
 
 Linux内核提供了*list_head*数据结构，字段*next*和*prev*分表标识链表向后和向前的指针元素。list\_head字段的指针中存的是另一个list\_head字段的地址。新链表使用宏LIST\_HEAD(list_name)创建。

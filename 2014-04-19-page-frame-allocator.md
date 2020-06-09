@@ -7,10 +7,7 @@ tags: 分区 页框 页框分配器
 ---
 内核有一个子系统，称之为分区页框分配器（*zoned page frame allocator*），这个子系统处理对连续页框组的内存分配请求，其主要组成如下。
 
-{:.center}
-![numa](/linux-kernel-architecture/images/page_frame_alloc.png){:style="max-width:600px"}
-
-{:.center}
+![numa](images/page_frame_alloc.png)
 内存管理区分配器示意图
 
 其中，管理区分配器接受动态内存分配与释放的请求，再请求分配的情况下，该部分搜索一个能满足所有请求的一组连续页框内存的管理区。在每个管理区内，页框被名为『伙伴系统』的部分来处理，为大刀更好的系统性能，一小部分页框保留在高速缓存中用于快速地满足对单个页框分配的请求。

@@ -7,10 +7,7 @@ tags: 释放页 伙伴系统
 ---
 \_\_free\_page是一个基础函数，用于实现内核API中所有涉及内存释放的函数，其代码流程图如下所示：
 
-{:.center}
-![free_page](/linux-kernel-architecture/images/free_page.png){:style="max-width:500px"}
-
-{:.center}
+![free_page](images/free_page.png)
 释放页流程图
 
 \_\_free\_page首先判断所需释放的内存是单页还是较大的内存块，如果是释放单页，那么就不必给交换给伙伴系统，而是置于per-CPU缓存中，对很可能出现在CPU高速缓存的页，则置放到热页的列表中。出于这个目的，内核提供了*free_hot_page*辅助函数，代码如下：
@@ -213,10 +210,7 @@ static inline void __free_one_page(struct page *page,
 
 举个例子，假设回收一个页，这个页的索引为10，那么实例图如下：
 
-{:.center}
-![free_steps](/linux-kernel-architecture/images/free_steps.png){:style="max-width:600px"}
-
-{:.center}
+![free_steps](images/free_steps.png)
 将一个页归还给伙伴系统示意图
 
 释放页会一直还循环到更高的阶，直到最高阶或者找不到伙伴可以合并为止。

@@ -9,10 +9,7 @@ slab分配器由一个紧密地交织的数据和内存结构的网络组成，�
 
 基本上slab缓存由下图所示的两部分组成：保存管理性数据的缓存对象和保存被管理对象的各个slab。
 
-{:.center}
-![slab](/linux-kernel-architecture/images/slab2.png){:style="max-width:500px"}
-
-{:.center}
+![slab](images/slab2.png)
 slab分配器的各个部分
 
 每个缓存只负责一种对象类型[^1]，或提供一般性的缓冲区。各个缓冲中slab的数目各有不同，这与已经使用的页的数目、对象长度和被管理对象的数目有关。另外，系统中所有的缓存都保存在一个双链表中。这使得内核有机会依次遍历所有的缓存，这是有必要的，例如在发生内存不足的情况下，内核可能需要缩减分配给缓存的内存数量。
@@ -21,10 +18,7 @@ slab分配器的各个部分
 
 如果更加仔细的研究缓存的结构，就会注意到一些细节，如下图：
 
-{:.center}
-![slab](/linux-kernel-architecture/images/slab3.png){:style="max-width:600px"}
-
-{:.center}
+![slab](images/slab3.png)
 slab缓存的精细结构
 
 除了管理性数据，即易用和空闲对象或标志寄存器的数目，缓存结构包括两个特别重要的成员。
@@ -44,10 +38,7 @@ slab缓存的精细结构
 
 对象在slab中并非连续排列，而是按照一个相当复杂的方案分布，如下图：
 
-{:.center}
-![slab](/linux-kernel-architecture/images/slab4.png){:style="max-width:600px"}
-
-{:.center}
+![slab](images/slab4.png)
 slab的精细结构
 
 用于每个对象的长度并不反应其确切的大小，相反，长度已经进行了舍入以满足某些对齐方式的要求。有两种可用的备选对齐方案：
@@ -61,10 +52,7 @@ slab的精细结构
 
 每个数组项对应于slab中的一个对象，只有在对象没有分配时，相应的数组项才有意义。在这种情况下，它指定了下一个空闲对象的索引。由于最低编号的空闲对象的编号还保存在slab起始处的管理结构中，内核无需使用链表或其他复杂的关联机制就可以轻松找到当前可用的所有对象，数组的最后一项总是一个结束标记，值为*BUFCTL_END*。
 
-{:.center}
-![slab](/linux-kernel-architecture/images/slab5.png){:style="max-width:600px"}
-
-{:.center}
+![slab](images/slab5.png)
 slab中空闲对象的管理
 
 大多数情况下，slab内存区的长度时不能被对象长度整除的，因此，内核就有了一些多余的内存，可以用来以偏移量的形式给slab『着色』。缓存的各个slab成员会指定不同的偏移量，以便将数据定位到不同的缓存行，因而slab开始和结束处的空闲内存时不同的。在计算偏移量时，内核必须考虑其他的对齐因素，例如L1高速缓存中数据结构的对齐。

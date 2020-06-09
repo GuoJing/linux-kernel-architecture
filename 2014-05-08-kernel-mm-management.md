@@ -27,10 +27,7 @@ info = (struct cdrom_info *)kmalloc(
 
 所有活动缓存的列表保留在*/proc/slabinfo*中。
 
-{:.center}
-![slabinfo](/linux-kernel-architecture/images/slabinfo.png)
-
-{:.center}
+![slabinfo](images/slabinfo.png)
 slabinfo示例
 
 输出的各列除了包含用于标识各个缓存的字符串名称之外，还包含下列信息：

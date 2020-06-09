@@ -36,7 +36,6 @@ tags: 内核抢占 临界区 读写安全
 
 下面列举了一些用于抢占计数器字段的宏：
 
-{:.table_center}
 宏                             | 说明
 ------------                   | -------------
 preempt\_count()               | 在thread\_info描述符中选择preempt\_count字段

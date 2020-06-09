@@ -11,10 +11,7 @@ tags: 页帧 页表
 
 根据内核代码，我们把全局页表，上层页表，中间页表和页表分别定义为PGD、PUD、PMD和PTE。所以页表结构可以简单归纳如下。
 
-{:.center}
-![system](/linux-kernel-architecture/images/page.png){:style="max-width:500px"}
-
-{:.center}
+![system](images/page.png)
 页表的简单结构
 
 图中说明了如何用比特位移来定义各字段分量的位置，这些分量根据不同的体系结构有所不同，比特位的具体数由*PAGE_SHIFT*指定。

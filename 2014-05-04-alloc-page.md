@@ -10,7 +10,7 @@ tags: 页 分配页 伙伴系统
 #### <include/linux/gfp.h> ####
 
 {% highlight c++ %}
-static inline struct page *alloc_pages_node(int nid, 
+static inline struct page *alloc_pages_node(int nid,
     gfp_t gfp_mask,
     unsigned int order)
 {
@@ -61,7 +61,7 @@ __alloc_pages_nodemask(gfp_t gfp_mask, unsigned int order,
     if (!preferred_zone)
         return NULL;
 
-    /* 
+    /*
        是伙伴系统的一个重要的辅助函数
        它通过标志集和分配阶来判断是否能够进行分配
        如果可以，则发起实际的分配操作
@@ -180,7 +180,6 @@ try_next_zone:
 
 其中字段及其意义如下：
 
-{:.table_center}
 字段名                  | 说明
 ------------           | -------------
 ALLOC\_WMARK\_MIN      | 使用pages_min水印
@@ -541,7 +540,7 @@ __rmqueue_fallback(struct zone *zone,
 
             /* 如果有必要，则在后面处理 MIGRATE_RESERVE */
             /* 如果尝试了所有手段仍然无法分配
-               则从MIGRATE_RESERVE列表满足分配 
+               则从MIGRATE_RESERVE列表满足分配
             */
             if (migratetype == MIGRATE_RESERVE)
                 continue;

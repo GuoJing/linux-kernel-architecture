@@ -7,8 +7,7 @@ tags: slab
 ---
 slab的分配使用*kmem_cache_alloc*函数，这个函数的流程图如下：
 
-{:.center}
-![slab](/linux-kernel-architecture/images/slab_alloc.png){:style="max-width:600px"}
+![slab](images/slab_alloc.png)
 
 #### <mm/slab.c> ####
 

@@ -9,10 +9,7 @@ tags: 进程描述符 进程状态 task_struct 资源限制
 
 进程描述符都是*task_struct*类型的结构，它的字段包含了与一个进程相关的所有信息。因为进程描述符中存放了那么多信息，所以它是非常复杂的，它不仅仅包括了很多进程属性的字段，还有一些字段包括了指向其他数据结构的指针，如下图：
 
-{:.center}
-![task struct](/linux-kernel-architecture/images/task_struct.png){:style="max-width:600px"}
-
-{:.center}
+![task struct](images/task_struct.png)
 进程描述符结构
 
 进程有很多状态，从代码中我们可以看：
@@ -20,7 +17,7 @@ tags: 进程描述符 进程状态 task_struct 资源限制
     - volatile long state;
       /* -1 unrunnable, 0 runnable, >0 stopped */
       represents the state of the process.
-      Authorized states are 
+      Authorized states are
       TASK_RUNNING, TASK_INTERRUPTIBLE, TASK_UNINTERRUPTIBLE,
       TASK_STOPPED, TASK_TRACED
       TASK_ZOMBIE and TASK_DEAD
@@ -126,7 +123,7 @@ struct task_struct {
   unsigned long stack_canary;
 #endif
 
-  /* 
+  /*
    * 分别指向原父进程
    * 最年轻的子进程
    * 年幼的兄弟进程

@@ -26,10 +26,7 @@ tags: 初始化 内存管理
 
 系统启动如下图所示：
 
-{:.center}
-![system](/linux-kernel-architecture/images/start_kernel.png){:style="max-width:400px"}
-
-{:.center}
+![system](images/start_kernel.png)
 初始化内存管理流程图
 
 这些函数及其意义分别如下：

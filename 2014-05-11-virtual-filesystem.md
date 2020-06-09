@@ -17,10 +17,7 @@ Linux是具有与其他操作系统和谐共存的能力，可以透明地安装
 
 其中*/floopy*是MS-DOS磁盘的一个安装点，而*/tmp*是一个标准的Ext文件系统的目录。如下图所示：
 
-{:.center}
-![vfs](/linux-kernel-architecture/images/vfs.png){:style="max-width:300px"}
-
-{:.center}
+![vfs](images/vfs.png)
 一个简单的VFS架构
 
 VFS支持的文件系统可以划分为三类。

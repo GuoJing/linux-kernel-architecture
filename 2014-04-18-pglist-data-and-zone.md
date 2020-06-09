@@ -9,10 +9,7 @@ tags: 内存 UMA NUMA 冷热页 内存域 内存管理区
 
 内存划分为**结点**(*node*)，每个结点关联到系统中的一个处理器，在内核中表示为*pg_data_t*的实例。各个结点又划分为**内存域**（*Zone*），这是内存的进一步细分。大致结构如下：
 
-{:.center}
-![numa](/linux-kernel-architecture/images/zonelist.png){:style="max-width:500px"}
-
-{:.center}
+![numa](images/zonelist.png)
 内存管理区示意图
 
 在一个理想的计算机体系结构中，一个页框就是一个内存存储单元，可以用于任何事情，例如存放内核数据和用户数据、缓冲磁盘数据等等。但实际上计算机体系结构有硬件的制约，这限制了页框可以使用的方式，尤其是Linux内核必须处理80x86体系结构的两种硬件约束：
@@ -22,7 +19,6 @@ tags: 内存 UMA NUMA 冷热页 内存域 内存管理区
 
 Linux把每个内存结点的物理内存划分为3个管理区，ZONE\_DMA、ZONE\_NORMAL、ZONE_HIGHMEM。其范围分别为：
 
-{:.table_center}
 字段名             | 说明
 ------------      | -------------
 ZONE\_DMA         | 低于16MB的内存页框
@@ -96,7 +92,6 @@ typedef struct pglist_data {
 
 其字段说明如下：
 
-{:.table_center}
 字段名             | 说明
 ------------      | -------------
 node_zone         | 是一个数组，包含了结点中各内存域的数据结构
@@ -118,7 +113,7 @@ kswapd_wait       | 交换守护进程（*swap daemon*）的等待队列，在�
 
 [具体提交在此](http://www.gelato.unsw.edu.au/archives/linux-ia64/0509/15528.html)，邮件里的说明摘录如下：
 
-> This patch is to remove pgdat link list from pgdat structure, 
+> This patch is to remove pgdat link list from pgdat structure,
 because I think it is redundant.<br>
 In the current implementation, pgdat structure has this link list.<br><br>
 struct pglist_data{struct pglist_data *pgdat_next;}<br><br>
@@ -151,7 +146,6 @@ enum node_states {
 
 其中一些字段的意义为：
 
-{:.table_center}
 字段名             | 说明
 ------------      | -------------
 N_POSSIBLE        | 结点在某个时候可能变为联机/在线
@@ -193,7 +187,7 @@ struct zone {
 
     ZONE_PADDING(_pad1_)
 
-    spinlock_t      lru_lock;   
+    spinlock_t      lru_lock;
     struct zone_lru {
         struct list_head list;
     } lru[NR_LRU_LISTS];
@@ -263,7 +257,6 @@ struct per_cpu_pages {
 
 其中字段意义如下：
 
-{:.table_center}
 字段名             | 说明
 ------------      | -------------
 count             | 列表中的页

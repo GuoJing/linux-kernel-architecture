@@ -14,18 +14,12 @@ tags: 内存空间 内存域 结点 伙伴系统
 
 从内核版本2.6.10开始提供了一个通用的框架，用于将上述信息转换为伙伴系统预期的结点和内存空间的数据结构，在这之前，各个体系结构必须自行建立相关结构。现在，体系结构相关代码只需要建立前述的简单结构，然后将复杂的工作留给*free_area_init_nodes*即可。
 
-{:.center}
-![free_area](/linux-kernel-architecture/images/free_area.png){:style="max-width:600px"}
-
-{:.center}
+![free_area](images/free_area.png)
 特定体系代码和内核代码之间的作用
 
 上图简单的描述了在建立结点和内存管理区数据结构时，特定于体系结构的代码和通用内核代码之间的相关作用，回到*free_area_init_nodes*函数本身，流程图如下：
 
-{:.center}
-![free_area](/linux-kernel-architecture/images/free_area_init_nodes.png){:style="max-width:500px"}
-
-{:.center}
+![free_area](images/free_area_init_nodes.png)
 初始化内存域和结点流程图
 
 *free_area_init_nodes*函数代码如下：
@@ -48,9 +42,9 @@ void __init free_area_init_nodes(unsigned long *max_zone_pfn)
                 sizeof(arch_zone_highest_possible_pfn));
     /* 通过max_zone_pfn传递给free_area_init_nodes
        信息记录了各个内存域包含的最大页帧号 */
-    /* find_min_pfn_with_active_regions 
+    /* find_min_pfn_with_active_regions
        用于找到注册的最低内存空间中可用的编号最小的页帧*/
-    arch_zone_lowest_possible_pfn[0] = 
+    arch_zone_lowest_possible_pfn[0] =
     find_min_pfn_with_active_regions();
     /* max_zone_pfn用于找到最低内存域的最大页帧号*/
     arch_zone_highest_possible_pfn[0] = max_zone_pfn[0];
@@ -136,7 +130,7 @@ void __paginginit free_area_init_node(
     /* 负责初始化一个简单但非常重要的数据结构 */
     alloc_node_mem_map(pgdat);
 #ifdef CONFIG_FLAT_NODE_MEM_MAP
-    printk(KERN_DEBUG "free_area_init_node: 
+    printk(KERN_DEBUG "free_area_init_node:
            node %d, pgdat %08lx, node_mem_map %08lx\n",
         nid, (unsigned long)pgdat,
         (unsigned long)pgdat->node_mem_map);
@@ -212,7 +206,7 @@ static void __paginginit free_area_init_core(struct pglist_data *pgdat,
     init_waitqueue_head(&pgdat->kswapd_wait);
     pgdat->kswapd_max_order = 0;
     pgdat_page_cgroup_init(pgdat);
-    
+
     /* 遍历所有的内存空间 */
 
     for (j = 0; j < MAX_NR_ZONES; j++) {
@@ -255,9 +249,9 @@ static void __paginginit free_area_init_core(struct pglist_data *pgdat,
         zone->present_pages = realsize;
 #ifdef CONFIG_NUMA
         zone->node = nid;
-        zone->min_unmapped_pages = 
+        zone->min_unmapped_pages =
             (realsize*sysctl_min_unmapped_ratio) / 100;
-        zone->min_slab_pages = 
+        zone->min_slab_pages =
             (realsize * sysctl_min_slab_ratio) / 100;
 #endif
         zone->name = zone_names[j];

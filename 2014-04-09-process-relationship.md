@@ -7,10 +7,7 @@ tags: 父进程 子进程 写时复制 fork vfork pidhash
 ---
 进程之间除了ID连接的关系之外，内核还负责管理建立在UNIX进程创建模型之上的『家族关系』。
 
-{:.center}
-![system](/linux-kernel-architecture/images/relation.png){:style="max-width:500px"}
-
-{:.center}
+![system](images/relation.png)
 进程之间的关系
 
 如果进程A分支形成进程B，进程A称之为父进程，而进程B称之为子进程。如果进程A分支若干次形成几个子进程B、C、D，则这几个子进程之间称为兄弟关系。
@@ -40,7 +37,7 @@ ptrace_list     | 指向锁跟踪进程的实际父进程链表的前一个和�
 系统调用提供服务的时候会发生如下情况，当进程P1希望向另一个进程P2发送一个信号时，P1调用kill()系统调用，其参数为P2的PID，内核从这个PID导出其对应的进程描述符，然后从P2的进程描述符中取出记录挂起信号的数据结构指针。顺序扫描进程描述符的pid字段是相当低效的，为了加速查找，引入了4个散列表，分别为：
 
 Hash表的类型   | 说明
-------------  | ------------ 
+------------  | ------------
 PIDTYPE_PID   | 进程的PID
 PIDYTPE_TGID  | 进程组的组长的PID
 PIDTYPE_PGID  | 进程组的组长的PID

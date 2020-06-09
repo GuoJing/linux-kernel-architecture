@@ -48,10 +48,7 @@ struct free_area {
 
 *free_area[]*数组中的各个元素索引也可以理解为索引，第0个链表代表内存管理区里的单页，第1个链表代表内存管理区里的两页。从下图可以看出，*free_area[0]*每个元素代表单个页帧，*free_area[2]*的每个元素代表4个页帧。
 
-{:.center}
-![system](/linux-kernel-architecture/images/buddy-system.png){:style="max-width:600px"}
-
-{:.center}
+![system](images/buddy-system.png){:style="max-width:600px"}
 伙伴系统分配
 
 伙伴系统不必是彼此链接的，如果一个内存区在分配期间被分解成两块，内核会自动将另外一块加入到对应的链表中，如果在未来的某个时刻，由于内存释放的缘故，两个内存区域都处于空闲状态，可通过其他地址判断是否为伙伴。管理工作较少也是伙伴系统的一个主要优点。

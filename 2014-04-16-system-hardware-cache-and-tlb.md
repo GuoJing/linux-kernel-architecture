@@ -21,10 +21,7 @@ RAM相对于硬盘来说，已经相当的快了。但和CPU相比，性能还�
 
 [^1]: 这些标志由一些位组成，这些位让高速缓存控制器能够辨别由这个行当前所映射的内存单元。
 
-{:.center}
-![system](/linux-kernel-architecture/images/dram_cache.png){:style="max-width:500px"}
-
-{:.center}
+![system](images/dram_cache.png)
 硬件高速缓存
 
 当访问一个RAM存储单元时，CPU从物理地址中提取出子集的索引号并把自己中所有行的标签与物理地址的高几位比较，如果发现某个行标签与这个物理地址的高位相同，则CPU命中一个高速缓存。

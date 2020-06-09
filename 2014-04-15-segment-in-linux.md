@@ -34,10 +34,7 @@ CPU当前的特权级（*CPL*）反映了进程是在用户态还是内核态，
 
 GDT的布局如下，每个GDT包含18个段描述符和14个空的未使用的保留项。插入未使用的项时为了使经常一起访问的描述符能够处于同一32字节的硬件高速缓存中。
 
-{:.center}
-![system](/linux-kernel-architecture/images/gdt.png)
-
-{:.center}
+![system](images/gdt.png)
 GDT结构表
 
 每一个GDT中包含的18个段描述符指向下列的段：

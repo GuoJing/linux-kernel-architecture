@@ -27,10 +27,7 @@ tags: 段描述符 全局描述符表 代码段 数据段 任务状态段 TSS
 
 这个表示段描述符代表一个包含LDT的段，他置出现在GDT中。相应的Type字段的值为2，S标志被置为0。
 
-{:.center}
-![system](/linux-kernel-architecture/images/segment_descriptor.png)
-
-{:.center}
+![system](images/segment_descriptor.png)
 段描述符示意图
 
 相应字段的意义如下：

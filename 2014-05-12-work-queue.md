@@ -51,7 +51,6 @@ struct cpu_workqueue_struct {
 
 其中字段及其意义如下：
 
-{:.table_center}
 字段                  | 说明
 ------------          | -------------
 lock                  | 保护该数据结构的自旋锁
@@ -81,7 +80,6 @@ struct work_struct {
 
 其中字段及其意义如下：
 
-{:.table_center}
 字段           | 说明
 ------------   | -------------
 data           | 传递给挂起函数的参数，是一个指针
