@@ -1,8 +1,0 @@
-- name: NASM
-  url: http://www.nasm.us/docs.php
-
-- name: PIC微控制器
-  url: http://zh.wikipedia.org/wiki/PIC微控制器
-
-- name: SMP对称多处理
-  url: http://zh.wikipedia.org/wiki/對稱多處理
