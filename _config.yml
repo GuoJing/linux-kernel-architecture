@@ -13,3 +13,5 @@ description:      "内核笔记"
 copyright:        "CopryRight GuoJing 2012-2012 by GitHub and Jekyll"
 headdesc:         "Linux Kernel Architecture 内核笔记"
 headkeys:         "Linux,Kernel,Architecture,内核,笔记"
+
+theme: jekyll-theme-minimal
